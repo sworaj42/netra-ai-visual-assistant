@@ -1,0 +1,30 @@
+path: data
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 14
+
+names:
+  - bicycle
+  - bus
+  - car
+  - chair
+  - crosswalk
+  - door
+  - green pedestrian light
+  - guide blocks
+  - motorcycle
+  - person
+  - pothole
+  - red pedestrian light
+  - stairs
+  - table
+
+roboflow:
+  workspace: major-project-dskar
+  project: vision-5
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/major-project-dskar/vision-5/dataset/1

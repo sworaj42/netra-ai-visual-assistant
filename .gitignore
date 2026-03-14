@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Training outputs
+runs/
+outputs/
+
+# Cache files
+*.cache
+
+# Optional export formats
+*.pth
+*.onnx
+
+# Dataset
+data/train/
+data/valid/
+data/test/
+
+# YOLO cache
+*.cache
