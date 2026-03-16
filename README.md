@@ -114,4 +114,35 @@ The YOLOv11s model was trained using the **Ultralytics YOLO pipeline** for detec
 
 ---
 
+## Results
+
+The trained YOLOv11s model was evaluated on the validation dataset using standard
+object detection metrics.
+
+### Performance Metrics
+
+| Metric | Value |
+|------|------|
+| Precision | 0.84 |
+| Recall | 0.79 |
+| mAP@0.5 | 0.85 |
+| mAP@0.5:0.95 | 0.64 |
+
+These results indicate that the model performs well in detecting navigation-relevant
+objects while maintaining a good balance between precision and recall.
+
+### Evaluation Plots
+
+#### Precision–Recall Curve
+![PR Curve](results/BoxPR_curve.png)
+
+#### F1 Score Curve
+![F1 Curve](results/BoxF1_curve.png)
+
+#### Confusion Matrix
+![Confusion Matrix](results/confusion_matrix.png)
+
+---
+ 
+
 
