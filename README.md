@@ -8,21 +8,58 @@ The app is built with accessibility at its core, leveraging Android's built-in**
 
 ---
 
-## System Architecture
+## System Pipeline
 
-NETRA follows a **client–server architecture**. The Flutter mobile app captures
-camera frames and sends them to a FastAPI inference server, which runs object
-detection and depth estimation and returns results as audio guidance to the user.
+NETRA operates in two modes selected by the user at launch.
 
-**Core Components:**
+**Detection Mode**
+Camera frames are preprocessed and passed to the **YOLOv11s** model, which
+identifies nearby objects — pedestrians, vehicles, crosswalks, stairs, traffic
+signals, and guide blocks. **Depth Anything V2** then estimates the distance of
+each detected object. The combined results are analyzed and delivered to the
+user as audio feedback via TalkBack.
 
-| Component | Role |
-|-----------|------|
-| **Mobile App** (Flutter) | Captures camera frames, handles user input, delivers audio feedback via TalkBack |
-| **Inference Server** (FastAPI) | Receives frames and runs AI inference |
-| **Object Detection** (YOLOv11s) | Detects obstacles, crosswalks, signals, and other navigation-critical objects |
-| **Depth Estimation** (Depth Anything V2) | Estimates distance of detected objects from the user |
+**Navigation Mode**
+The user speaks a destination, which is converted to text and used to fetch a
+walking route via **OpenStreetMap**. The camera continues scanning for nearby
+obstacles in parallel, and the system provides real-time voice-guided
+instructions throughout the journey.
 
-![System Architecture](docs/images/system_block_diagram.png)
+![System Pipeline](docs/images/system_block_diagram.png)
 
 ---
+
+## AI Models
+
+NETRA uses two core AI models to perceive and understand the environment in
+real time.
+
+### Object Detection — YOLOv11s
+
+A custom fine-tuned **YOLOv11s** model detects navigation-critical objects from
+live camera frames. Detected classes include:
+
+- Pedestrians, vehicles
+- Crosswalks, traffic signals
+- Guide blocks, stairs, obstacles
+
+The model outputs bounding boxes and class labels for each detected object.
+
+### Depth Estimation — Depth Anything V2
+
+**Depth Anything V2** estimates the distance of detected objects using a single
+RGB camera — no LiDAR or stereo setup required. It generates a depth map per
+frame where pixel intensity corresponds to relative distance from the camera.
+
+### Combined Perception
+
+Detection and depth outputs are fused to give the system a full understanding
+of the user's surroundings — what objects are present, how far they are, and
+whether they pose a risk. This drives the real-time audio feedback delivered
+to the user.
+
+![Model Integration](docs/images/model_integration.png)
+
+---
+
+
