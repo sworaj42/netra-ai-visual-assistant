@@ -134,13 +134,13 @@ objects while maintaining a good balance between precision and recall.
 ### Evaluation Plots
 
 #### Precision–Recall Curve
-![PR Curve](results/BoxPR_curve.png)
+![PR Curve](results/yolo11s_train/BoxPR_curve.png)
 
 #### F1 Score Curve
-![F1 Curve](results/BoxF1_curve.png)
+![F1 Curve](results/yolo11s_train/BoxF1_curve.png)
 
 #### Confusion Matrix
-![Confusion Matrix](results/confusion_matrix.png)
+![Confusion Matrix](results/yolo11s_train/confusion_matrix_normalized.png)
 
 ---
  
