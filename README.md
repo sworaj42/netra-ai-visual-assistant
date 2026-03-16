@@ -62,4 +62,56 @@ to the user.
 
 ---
 
+## Dataset
+
+The YOLOv11s model was trained on a custom dataset sourced from **Roboflow Universe**, containing navigation-relevant objects common in pedestrian environments.
+
+### Classes (14)
+
+`bicycle` `bus` `car` `chair` `crosswalk` `door` `green pedestrian light`
+`guide blocks` `motorcycle` `person` `pothole` `red pedestrian light`
+`stairs` `table`
+
+### Annotations
+
+Labels are in **YOLO bounding box format**:
+```
+<class_id> <x_center> <y_center> <width> <height>
+```
+All values are normalized relative to image dimensions.
+
+### Augmentation
+
+Training used the **Ultralytics YOLO pipeline** with automatic augmentations color variation, scaling, flipping, mosaic, and translation to improve
+generalization across real-world lighting and environmental conditions.
+
+---
+
+## Model Training
+
+The YOLOv11s model was trained using the **Ultralytics YOLO training pipeline** for detecting navigation-relevant objects.
+
+### Training Configuration
+
+## Model Training
+
+The YOLOv11s model was trained using the **Ultralytics YOLO pipeline** for detecting navigation-relevant objects.
+
+### Training Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Architecture | YOLOv11s |
+| Image Size | 640 × 640 |
+| Max Epochs | 100 (early stopped at 55) |
+| Batch Size | 16 |
+| Optimizer | AdamW |
+| Learning Rate | 0.001 |
+| Weight Decay | 0.0005 |
+| Mixed Precision (AMP) | Enabled |
+| Device | GPU |
+| Early Stopping Patience | 10 |
+
+---
+
 
